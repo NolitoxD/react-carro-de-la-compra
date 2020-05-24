@@ -1,0 +1,40 @@
+.product{
+width: 12vw;
+height: 22vw;
+padding: 0px;
+
+.card{
+    margin: 10px;
+    width: 11vw;
+    height: 22vw;
+
+    .image{
+        width: 11w;
+    }
+
+.btn{
+    width: 100%;
+    background-color: transparent;
+    color: blue;
+    border-color: blue($color: #000000);
+    border-radius: 50px;
+    transition: 500ms;
+
+
+        &:hover,
+        &:focus,
+        &:active {
+            cursor: pointer;
+            background-color: blue !important;
+            color: white;
+            box-shadow: 2px 2px 4px #444444 !important;
+        }
+
+}
+    .card-title{
+        height: 50px;
+    }
+}
+
+
+}
