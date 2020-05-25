@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import { Button } from "react-bootstrap";
+
 import { ReactComponent as CartEmpty } from "../../assets/svg/cart-empty.svg";
 import { ReactComponent as CartFull } from "../../assets/svg/cart-full.svg";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Garbage } from "../../assets/svg/garbage.svg";
+
 import { STORAGE, BASE_PATH } from "../../utils/constants";
+
 import {
   removeArrayDuplicates,
   countDuplicatesItemArray,
@@ -14,7 +17,9 @@ import {
 import "./Cart.scss";
 
 const Cart = ({ productsCart, cargarProductos, products, loading }) => {
+  
   const [cartOpen, setcartOpen] = React.useState(false);
+  
   const [singleProductCart, setSingleProductCart] = React.useState([]);
 
   const [cartTotalPrice, setcartTotalPrice] = React.useState(0);
@@ -52,10 +57,20 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
     setcartTotalPrice(totalPrice);
   }, [productsCart, products]);
 
+
   React.useEffect(() => {
     const allProductsId = removeArrayDuplicates(productsCart);
     setSingleProductCart(allProductsId);
   }, [productsCart]);
+
+
+  const emptyCart = () => {
+    localStorage.removeItem(STORAGE);
+    cargarProductos();
+  };
+
+
+
 
   const openCart = () => {
     setcartOpen(true);
@@ -63,16 +78,16 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
     document.body.style.overflow = "hidden";
   };
 
-  const emptyCart = () => {
-    localStorage.removeItem(STORAGE);
-    cargarProductos();
-  };
-
   const closeCart = () => {
     setcartOpen(false);
 
     document.body.style.overflow = "scroll";
   };
+
+
+
+
+
 
   const incrementCount = (id) => {
     const arrayItemsCard = productsCart;
@@ -83,11 +98,15 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
 
   const descentCount = (id) => {
     const arrayItemsCard = productsCart;
-    console.log("id", id);
+    // console.log("id", id);
     const result = removeItemArray(arrayItemsCard, id.toString());
     localStorage.setItem(STORAGE, result);
     cargarProductos();
   };
+
+
+
+
 
   const CartHeader = ({ closeCart, emptyCart }) => {
     return (
@@ -109,7 +128,7 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
     return (
       <div className="cart-content-footer">
         <div>
-          <p>Totall aproximado:</p>
+          <p>Total aproximado:</p>
           {/**{cartTotalPrice.toFixed(2)} */}
           <p> {cartTotalPrice.toFixed(2)} €</p>
         </div>
@@ -117,6 +136,9 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
       </div>
     );
   };
+
+
+
 
   const CartProducts = ({
     products,
@@ -177,10 +199,14 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
     );
   };
 
+
+
+
   const widthCart = cartOpen ? 400 : 0;
 
   return (
     <Fragment>
+
       <Button variant="link" className="cart">
         {productsCart.length > 0 ? (
           <CartFull onClick={openCart}></CartFull>
@@ -189,7 +215,10 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
         )}
       </Button>
 
+
+
       <div className="cart-content" style={{ width: widthCart }}>
+
         <CartHeader closeCart={closeCart} emptyCart={emptyCart}></CartHeader>
       
           <div className="cart-content-products">
@@ -207,6 +236,7 @@ const Cart = ({ productsCart, cargarProductos, products, loading }) => {
           </div>
         
         <CartFooter cartTotalPrice={cartTotalPrice}></CartFooter>
+
       </div>
     </Fragment>
   );

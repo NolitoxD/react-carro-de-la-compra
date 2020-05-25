@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
-import {BASE_PATH} from '../../utils/constants';
 
+import {BASE_PATH} from '../../utils/constants';
 
 import "./Product.scss";
 

@@ -1,10 +1,14 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+
 import { ReactComponent as Logo } from "../../assets/svg/logo.svg";
+
 import "./TopMenus.scss";
+
 import Cart from "../Cart/Cart";
 
 const TopMenu = ({productsCart, cargarProductos, products, loading}) => {
+ 
   const BrandNav = () => {
     return (
       <Navbar.Brand>
@@ -13,8 +17,11 @@ const TopMenu = ({productsCart, cargarProductos, products, loading}) => {
       </Navbar.Brand>
     );
   };
+{
 
-  const MenuNav = () => {
+/**
+ * 
+ * const MenuNav = () => {
     return (
       <Nav className="mr-auto">
         <Nav.Link href="#">Aperirivos</Nav.Link>
@@ -23,8 +30,10 @@ const TopMenu = ({productsCart, cargarProductos, products, loading}) => {
       </Nav>
     );
   };
+ */
 
-
+}
+  
 
 
   return (

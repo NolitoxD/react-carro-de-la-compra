@@ -1,10 +1,13 @@
 import React from "react";
-import TopMenu from "./components/TopMenu";
+
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+
 import { urlApiProducts } from "./utils/constants";
 import { STORAGE } from "./utils/constants";
+
 import Products from "./components/Products";
+import TopMenu from "./components/TopMenu";
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -27,7 +30,7 @@ function App() {
   };
 
   const agregarProducto = (id, name) => {
-    console.log("agregar producto", id, name);
+   // console.log("agregar producto", id, name);
 
     const idsProducts = productsCart;
 
@@ -37,7 +40,7 @@ function App() {
 
     updateProductsCart(idsProducts);
 
-    console.log("array agreagar", productsCart);
+   // console.log("array agreagar", productsCart);
 
     // guardar en base de datos o localstorage(clave : valor)
     localStorage.setItem(STORAGE, productsCart);
@@ -76,6 +79,7 @@ function App() {
         error={error}
         agregarProducto={agregarProducto}
       ></Products>
+
       <ToastContainer
         position="bottom-left"
         autoClose={4000}

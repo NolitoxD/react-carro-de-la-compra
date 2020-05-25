@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+
 const useFetch = (url, options) => {
 
     const [loading, setLoading] = React.useState(true);
@@ -9,8 +9,8 @@ const useFetch = (url, options) => {
    React.useEffect(() => {
         (async () => {
           try {
-            const res = await axios.get(`${urlApiProducts}/helados`);
-            const json = await res.data();
+            const res = await fetch.get(`${urlApiProducts}/helados`);
+            const json = await res.json();
             setResult(json);
             setLoading(false);
           } catch (err) {
