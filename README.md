@@ -5,7 +5,7 @@ para arrancar json server - json-server --watch dbProducts.json --port 4000
 
 ## npm run start
 
-para arrancar react
+para arrancar react la aplicacion del carrito de la compra
 
 
 
